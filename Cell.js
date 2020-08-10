@@ -2,12 +2,11 @@ export class Cell{
   constructor(x, y, width, height){
     this.x = x * width;
     this.y = y * width;
-    // this.startX = this.x * width;
-    // this.startY = this.y * height;
     this.width = width;
     this.height = height;
-    this.wallColor = 'black'
-    this.walls = [true, true, true, true] //wall order is [Top, Right, Bottom, Left]
+    this.wallColor = 'black';
+    this.walls = [true, true, true, true]; //wall order is [Top, Right, Bottom, Left]
+    this.visited = false;
   }
 
   drawTopWall(ctx){
@@ -18,7 +17,6 @@ export class Cell{
     ctx.stroke(); 
   }
 
-  
   drawRightWall(ctx){
     ctx.fillStyle = this.wallColor;
     ctx.beginPath();
