@@ -16,7 +16,7 @@ export class Cell{ //x is row y is col
 
     this.totalRows = rows;
     this.totalColumns = columns;
-    this.wallColor = 'black';
+    this.wallColor = 'red';
     this.walls = [true, true, true, true]; //wall order is [Top, Right, Bottom, Left]
     this.visited = false;
   }
