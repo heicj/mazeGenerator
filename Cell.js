@@ -94,6 +94,11 @@ export class Cell{ //x is row y is col
     ctx.stroke(); 
   }
 
+  highlight(ctx){
+    ctx.fillStyle = 'yellow'
+    ctx.fillRect(this.x, this.y, this.width, this.height)
+  }
+
   draw(ctx){
      if(this.walls[0]) this.drawTopWall(ctx);
      if(this.walls[1]) this.drawRightWall(ctx);
@@ -101,7 +106,7 @@ export class Cell{ //x is row y is col
      if(this.walls[3]) this.drawLeftWall(ctx);
 
      if(this.visited){
-       ctx.fillStyle = 'lightgreen'
+       ctx.fillStyle = 'lightblue'
        ctx.fillRect(this.x, this.y, this.width, this.height)
      }
   }

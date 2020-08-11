@@ -14,18 +14,17 @@ const cellHeight = 40;
 const columns = CANVAS_WIDTH/cellWidth;
 const rows = CANVAS_HEIGHT/cellHeight;
 
-ctx.fillStyle = 'lightblue';
+ctx.fillStyle = 'blue';
 ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
 
 let cells = [];
+let stack = [];
 
 let current;
 
 function removeWall(current, next){
   let row = current.row - next.row;
   let col = current.col - next.col;
-  console.log(current)
-  console.log(next)
 
   if(col == 1){ //moved left
     current.walls[3] = false;
@@ -53,28 +52,36 @@ for(let row = 0; row < rows; row++){
   current = cells[0]
 }
 
-let prevTime = 0;
-function draw(timestamp){
+let visitedCells = 0;
+
+function draw(){
 
   for(let i = 0; i < cells.length; i++){
     cells[i].draw(ctx)
   }
 
   current.visited = true;
-  // ctx.fillStyle = 'pink'
-  // ctx.fillRect(current.x, current.y, current.width, current.height)
+  current.highlight(ctx)
   let next = current.getNeighbor(cells)
   if(next){
+    visitedCells++;
     next.visited = true;
+
+    stack.push(current)
 
     removeWall(current, next)
 
     current = next;
+  } else if(stack.length > 0) {
+    current = stack.pop();
   }
 
-  window.requestAnimationFrame(draw)
+  // window.requestAnimationFrame(draw)
 }
 
-draw();
+while(visitedCells < columns * rows){
+  draw();
+
+}
 
 
