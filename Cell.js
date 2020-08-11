@@ -101,6 +101,7 @@ export class Cell{ //x is row y is col
      if(this.walls[3]) this.drawLeftWall(ctx);
 
      if(this.visited){
+       ctx.fillStyle = 'lightgreen'
        ctx.fillRect(this.x, this.y, this.width, this.height)
      }
   }

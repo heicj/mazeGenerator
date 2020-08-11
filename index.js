@@ -42,6 +42,8 @@ function draw(timestamp){
   }
 
   current.visited = true;
+  ctx.fillStyle = 'pink'
+  ctx.fillRect(current.x, current.y, current.width, current.height)
   let next = current.getNeighbor(cells)
   if(next){
     next.visited = true;
