@@ -16,14 +16,14 @@ export class Cell{ //x is row y is col
 
     this.totalRows = rows;
     this.totalColumns = columns;
-    this.wallColor = 'red';
+    this.wallColor = 'purple';
     this.walls = [true, true, true, true]; //wall order is [Top, Right, Bottom, Left]
     this.visited = false;
   }
 
   index(row, col){
-    if(row < 0 || col < 0 || row > this.rows - 1 || col > this.columns - 1){
-      return -1;
+    if(row < 0 || col < 0 || row > (this.totalRows - 1) || col > (this.totalColumns - 1) ){
+      return undefined;
     } else {
       return col + row * this.totalColumns; //figure out how to not hard code 10, use columns const from index.js
     }
@@ -64,6 +64,7 @@ export class Cell{ //x is row y is col
 
   drawTopWall(ctx){
     ctx.fillStyle = this.wallColor;
+    ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
     ctx.lineTo(this.x + this.width, this.y);
@@ -72,6 +73,7 @@ export class Cell{ //x is row y is col
 
   drawRightWall(ctx){
     ctx.fillStyle = this.wallColor;
+    ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(this.x + this.width, this.y);
     ctx.lineTo(this.x + this.width, this.y + this.height);
@@ -80,6 +82,7 @@ export class Cell{ //x is row y is col
 
   drawBottomWall(ctx){
     ctx.fillStyle = this.wallColor;
+    ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(this.x, this.y + this.height);
     ctx.lineTo(this.x + this.width, this.y + this.height);
@@ -88,6 +91,7 @@ export class Cell{ //x is row y is col
 
   drawLeftWall(ctx){
     ctx.fillStyle = this.wallColor;
+    ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(this.x, this.y);
     ctx.lineTo(this.x, this.y + this.height);
@@ -95,20 +99,22 @@ export class Cell{ //x is row y is col
   }
 
   highlight(ctx){
-    ctx.fillStyle = 'yellow'
+    ctx.fillStyle = 'red'
     ctx.fillRect(this.x, this.y, this.width, this.height)
   }
 
   draw(ctx){
+    if(this.visited){
+      ctx.fillStyle = 'white'
+      ctx.lineWidth = 5
+      ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+
      if(this.walls[0]) this.drawTopWall(ctx);
      if(this.walls[1]) this.drawRightWall(ctx);
      if(this.walls[2]) this.drawBottomWall(ctx);
      if(this.walls[3]) this.drawLeftWall(ctx);
 
-     if(this.visited){
-       ctx.fillStyle = 'lightblue'
-       ctx.fillRect(this.x, this.y, this.width, this.height)
-     }
   }
 
 }

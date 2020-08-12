@@ -3,13 +3,13 @@ import { Cell } from './Cell.js';
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d');
 
-const CANVAS_HEIGHT = 400;
-const CANVAS_WIDTH = 400;
+const CANVAS_HEIGHT = 800;
+const CANVAS_WIDTH = 800;
 canvas.height = CANVAS_HEIGHT;
 canvas.width = CANVAS_WIDTH;
 
-const cellWidth = 10;
-const cellHeight = 10;
+const cellWidth = 25;
+const cellHeight = 25;
 
 const columns = CANVAS_WIDTH/cellWidth;
 const rows = CANVAS_HEIGHT/cellHeight;
@@ -50,6 +50,8 @@ for(let row = 0; row < rows; row++){
   }
 
   current = cells[0]
+  cells[0].walls[3] = false;
+  cells[cells.length - 1].walls[2] = false;
 }
 
 let visitedCells = 0;
