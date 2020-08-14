@@ -8,8 +8,8 @@ const CANVAS_WIDTH = 800;
 canvas.height = CANVAS_HEIGHT;
 canvas.width = CANVAS_WIDTH;
 
-const cellWidth = 25;
-const cellHeight = 25;
+const cellWidth = 80;
+const cellHeight = 80;
 
 const columns = CANVAS_WIDTH/cellWidth;
 const rows = CANVAS_HEIGHT/cellHeight;
@@ -54,12 +54,12 @@ for(let row = 0; row < rows; row++){
   cells[cells.length - 1].walls[2] = false;
 }
 
-let visitedCells = 0;
+let visitedCells = 1;
 function draw(){
 
-  for(let i = 0; i < cells.length; i++){
-    cells[i].draw(ctx)
-  }
+  // for(let i = 0; i < cells.length; i++){
+  //   cells[i].draw(ctx)
+  // }
 
   current.visited = true;
   current.highlight(ctx)
@@ -76,6 +76,11 @@ function draw(){
   } else if(stack.length > 0) {
     current = stack.pop();
   }
+
+  for(let i = 0; i < cells.length; i++){
+    cells[i].draw(ctx)
+  }
+  console.log(stack)
   if(visitedCells < (rows *columns)) window.requestAnimationFrame(draw)
   
 }
