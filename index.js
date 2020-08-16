@@ -57,10 +57,6 @@ for(let row = 0; row < rows; row++){
 let visitedCells = 1;
 function draw(){
 
-  // for(let i = 0; i < cells.length; i++){
-  //   cells[i].draw(ctx)
-  // }
-
   current.visited = true;
   current.highlight(ctx)
   let next = current.getNeighbor(cells)
@@ -80,15 +76,12 @@ function draw(){
   for(let i = 0; i < cells.length; i++){
     cells[i].draw(ctx)
   }
-  // console.log(stack)
   console.log('running')
   if(visitedCells < (rows *columns)) window.requestAnimationFrame(draw)
   
 }
 
 draw();
-// while(visitedCells < 100){
-//   // draw();
-// }
+
 
 
