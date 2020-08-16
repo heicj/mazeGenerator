@@ -3,13 +3,13 @@ import { Cell } from './Cell.js';
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d');
 
-const CANVAS_HEIGHT = 800;
-const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 1500;
+const CANVAS_WIDTH = 1500;
 canvas.height = CANVAS_HEIGHT;
 canvas.width = CANVAS_WIDTH;
 
-const cellWidth = 80;
-const cellHeight = 80;
+const cellWidth = 30;
+const cellHeight = 30;
 
 const columns = CANVAS_WIDTH/cellWidth;
 const rows = CANVAS_HEIGHT/cellHeight;
@@ -80,7 +80,8 @@ function draw(){
   for(let i = 0; i < cells.length; i++){
     cells[i].draw(ctx)
   }
-  console.log(stack)
+  // console.log(stack)
+  console.log('running')
   if(visitedCells < (rows *columns)) window.requestAnimationFrame(draw)
   
 }
