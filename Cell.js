@@ -1,4 +1,3 @@
-
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -25,7 +24,7 @@ export class Cell{ //x is row y is col
     if(row < 0 || col < 0 || row > (this.totalRows - 1) || col > (this.totalColumns - 1) ){
       return undefined;
     } else {
-      return col + row * this.totalColumns; //figure out how to not hard code 10, use columns const from index.js
+      return col + row * this.totalColumns;
     }
   }
 
@@ -59,7 +58,6 @@ export class Cell{ //x is row y is col
     }else{
       return undefined;
     }
-
   }
 
   drawTopWall(ctx){
@@ -114,7 +112,5 @@ export class Cell{ //x is row y is col
      if(this.walls[1]) this.drawRightWall(ctx);
      if(this.walls[2]) this.drawBottomWall(ctx);
      if(this.walls[3]) this.drawLeftWall(ctx);
-
   }
-
 }
